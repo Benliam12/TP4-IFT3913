@@ -1,10 +1,7 @@
 package test;
 
 import currencyConverter.Currency;
-import currencyConverter.CurrencyConverter;
 import currencyConverter.MainWindow;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -21,7 +18,7 @@ public class BlackBoxTests {
     @MethodSource("currencyCheck")
     void testCurrencyConvertingList(String c1, String c2){
         //System.out.println(MainWindow.convert(c1,c2, this.currencies, 1d));
-        assertTrue(MainWindow.convert(c1,c2, Currency.init(), 1d) > 0d);
+        assertTrue(MainWindow.convert(c1,c2, currencies, 1d) > 0d);
     }
 
     static Stream<String[]> currencyCheck(){
@@ -38,5 +35,5 @@ public class BlackBoxTests {
         return pairs.stream();
     }
 
-    
+
 }
