@@ -44,6 +44,26 @@ public class WhiteBoxTest {
         assertEquals(MainWindow.convert(this.currencies.get(1).getName(), "test",this.currencies,1d), 0.0 );
     }
 
+    @Test
+    void whiteBoxTestMainWindowConvertC1(){
+        assertEquals(MainWindow.convert(this.currencies.get(1).getName(), this.currencies.get(0).getName(),new ArrayList<Currency>(),1d), 0 );
+    }
+
+    // chemin parcourt les boucles 0 fois. Sinon dans A, B1 et B2 on passe dans toutes les boucles.
+    @Test
+    void whiteBoxTestMainWindowConvertC2(){
+        assertEquals(MainWindow.convert("test", this.currencies.get(0).getName(),new ArrayList<Currency>(),1d), 0.0 );
+    }
+
+    @Test
+    void whiteBoxTestMainWindowConvertC3(){
+        assertEquals(MainWindow.convert(this.currencies.get(1).getName(), "test",new ArrayList<Currency>(),1d), 0.0 );
+    }
+
+    
+
+
+
 
 
 
