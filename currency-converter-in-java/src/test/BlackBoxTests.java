@@ -24,7 +24,6 @@ public class BlackBoxTests {
     @ParameterizedTest
     @MethodSource("currencyCheck")
     void testCurrencyConvertingList(String c1, String c2){
-        //System.out.println(MainWindow.convert(c1,c2, this.currencies, 1d));
         assertTrue(MainWindow.convert(c1,c2, currencies, 1d) > 0d);
     }
 
