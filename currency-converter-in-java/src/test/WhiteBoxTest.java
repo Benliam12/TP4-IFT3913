@@ -60,7 +60,43 @@ public class WhiteBoxTest {
         assertEquals(MainWindow.convert(this.currencies.get(1).getName(), "test",new ArrayList<Currency>(),1d), 0.0 );
     }
 
-    
+    //D: auncun if avec condition composé
+
+    //E: Aucune boucle imbriqué ni concaténé puis ont test toutes les itérations possibles de paires de devises.
+
+    /**
+     * We test every single pair of currencies.
+     * @param c1 Currency 1
+     * @param c2 Currency 2
+     */
+    @ParameterizedTest
+    @MethodSource("currencyCheck")
+    void testCurrencyConvertingList(String c1, String c2){
+        //System.out.println(MainWindow.convert(c1,c2, this.currencies, 1d));
+        assertTrue(MainWindow.convert(c1,c2, currencies, 1d) > 0d);
+    }
+
+    /**
+     * Generates every possible currency trading.
+     * @return List of every possible currency trading needed for the test.
+     */
+    static Stream<String[]> currencyCheck(){
+        ArrayList<String[]> pairs = new ArrayList<>();
+        ArrayList<Currency> currency = Currency.init();
+
+        for (Currency s1 : currency){
+            for (Currency s2 : currency){
+                if(!s1.getName().equalsIgnoreCase(s2.getName())){
+                    String[] p = {s1.getName(),s2.getName()};
+                    pairs.add(p);
+                }
+            }
+        }
+        return pairs.stream();
+    }
+
+
+
 
 
 
