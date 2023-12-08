@@ -45,6 +45,11 @@ public class WhiteBoxTest {
     }
 
     @Test
+    void whiteBoxTestMainWindowConvertB3(){
+        assertEquals(MainWindow.convert("test", "test",this.currencies,1d), 0.0 );
+    }
+
+    @Test
     void whiteBoxTestMainWindowConvertC1(){
         assertEquals(MainWindow.convert(this.currencies.get(1).getName(), this.currencies.get(0).getName(),new ArrayList<Currency>(),1d), 0 );
     }
@@ -95,10 +100,11 @@ public class WhiteBoxTest {
         return pairs.stream();
     }
 
-
-
-
-
+    @Test
+    void BigNumberTest(){
+        Double a = Currency.convert(Double.MAX_VALUE, Double.MAX_VALUE);
+        assertEquals(a, Math.round((Double.MAX_VALUE*Double.MAX_VALUE)*100d) / 100d);
+    }
 
 
 
